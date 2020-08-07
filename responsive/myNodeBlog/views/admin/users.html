@@ -1,0 +1,218 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="typecho-page-title">
+    <h2>管理用户<a href="/admin/user">新增</a></h2>
+</div>
+<div class="row typecho-page-main" role="main">
+    <div class="col-mb-12 typecho-list">
+        <div class="typecho-list-operate clearfix">
+            <form method="get">
+                <div class="operate">
+                    <label><i class="sr-only">全选</i><input type="checkbox" class="typecho-table-select-all" /></label>
+                    <div class="btn-group btn-drop">
+                        <button class="btn dropdown-toggle btn-s" type="button"><i class="sr-only">操作</i>选中项 <i class="i-caret-down"></i></button>
+                        <ul class="dropdown-menu">
+                            <li><a lang="你确认要删除这些用户吗?" href="/admin/deleteUsers">删除</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="search" role="search">
+                    <input type="text" class="text-s" placeholder="请输入关键字" value="" name="keywords" />
+                    <button type="submit" class="btn btn-s">筛选</button>
+                </div>
+            </form>
+        </div><!-- end .typecho-list-operate -->
+
+        <form method="post" name="manage_users" class="operate-form">
+            <div class="typecho-table-wrap">
+                <table class="typecho-list-table">
+                    <colgroup>
+                        <col width="20"/>
+                        <col width="6%"/>
+                        <col width="30%"/>
+                        <col width=""/>
+                        <col width="25%"/>
+                        <col width="15%"/>
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th> </th>
+                        <th> </th>
+                        <th>用户名</th>
+                        <th>昵称</th>
+                        <th>电子邮件</th>
+                        <th>用户组</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% if !users%}
+                    <tr>
+                        <td colspan="6">
+                            <h6 class="typecho-list-table-title">没有用户信息</h6>
+                        </td>
+                    </tr>
+                    {% endif %}
+
+                    {% if users%}
+                        {% for user in users %}
+                            <tr id="user-{{ user.id }}">
+                                <td><input type="checkbox" value="{{ user.id }}" name="uids"/></td>
+                                <td><a href="/admin/manage-posts?uid=1" class="balloon-button left size-20">{{ user.id }}</a></td>
+                                <td><a href="/admin/user?uid={{ user.id }}">{{ user.name }}</a>
+                                    <a href="/index/author/{{ user.id }}/" title="浏览{{ user.nickName}}"><i class="i-exlink"></i></a>
+                                </td>
+                                <td>{{ user.nickName }}</td>
+                                <td><a href="mailto:{{ user.mail }}">{{ user.mail }}</a></td>
+                                <td>{{ user.group }}</td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                    </tbody>
+                </table><!-- end .typecho-list-table -->
+            </div><!-- end .typecho-table-wrap -->
+        </form><!-- end .operate-form -->
+
+        <div class="typecho-list-operate clearfix">
+            <form method="get">
+                <div class="operate">
+                    <label><i class="sr-only">全选</i><input type="checkbox" class="typecho-table-select-all" /></label>
+                    <div class="btn-group btn-drop">
+                        <button class="btn dropdown-toggle btn-s" type="button"><i class="sr-only">操作</i>选中项 <i class="i-caret-down"></i></button>
+                        <ul class="dropdown-menu">
+                            <li><a lang="你确认要删除这些用户吗?" href="/admin/deleteUsers">删除</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <ul class="typecho-pager">
+                    {% if hasPre %}
+                    <li> <a class="next" href="/admin/manage-users?page={{ crtPage - 1 }}">上一页</a></li>
+                    {% endif %}
+                    {% if hasNext %}
+                    <li> <a class="next" href="/admin/manage-users?page={{crtPage + 1}}">下一页</a></li>
+                    {% endif %}
+                </ul>
+            </form>
+        </div><!-- end .typecho-list-operate -->
+    </div><!-- end .typecho-list -->
+</div><!-- end .typecho-page-main -->
+{% endblock %}
+
+{% block jsBlock %}
+<script>
+    (function () {
+        $(document).ready(function() {
+            // 处理消息机制
+            (function () {
+                var prefix = '716f68e4233725c4cc57cf549cb1cee0',
+                        cookies = {
+                            notice      :   $.cookie(prefix + '__typecho_notice'),
+                            noticeType  :   $.cookie(prefix + '__typecho_notice_type'),
+                            highlight   :   $.cookie(prefix + '__typecho_notice_highlight')
+                        },
+                        path = '/';
+
+                if (!!cookies.notice && 'success|notice|error'.indexOf(cookies.noticeType) >= 0) {
+                    var head = $('.typecho-head-nav'),
+                            p = $('<div class="message popup ' + cookies.noticeType + '">'
+                                    + '<ul><li>' + $.parseJSON(cookies.notice).join('</li><li>')
+                                    + '</li></ul></div>'), offset = 0;
+
+                    if (head.length > 0) {
+                        p.insertAfter(head);
+                        offset = head.outerHeight();
+                    } else {
+                        p.prependTo(document.body);
+                    }
+
+                    function checkScroll () {
+                        if ($(window).scrollTop() >= offset) {
+                            p.css({
+                                'position'  :   'fixed',
+                                'top'       :   0
+                            });
+                        } else {
+                            p.css({
+                                'position'  :   'absolute',
+                                'top'       :   offset
+                            });
+                        }
+                    }
+
+                    $(window).scroll(function () {
+                        checkScroll();
+                    });
+
+                    checkScroll();
+
+                    p.slideDown(function () {
+                        var t = $(this), color = '#C6D880';
+
+                        if (t.hasClass('error')) {
+                            color = '#FBC2C4';
+                        } else if (t.hasClass('notice')) {
+                            color = '#FFD324';
+                        }
+
+                        t.effect('highlight', {color : color})
+                                .delay(5000).slideUp(function () {
+                            $(this).remove();
+                        });
+                    });
+
+
+                    $.cookie(prefix + '__typecho_notice', null, {path : path});
+                    $.cookie(prefix + '__typecho_notice_type', null, {path : path});
+                }
+
+                if (cookies.highlight) {
+                    $('#' + cookies.highlight).effect('highlight', 1000);
+                    $.cookie(prefix + '__typecho_notice_highlight', null, {path : path});
+                }
+            })();
+
+
+            // 导航菜单 tab 聚焦时展开下拉菜单
+            (function () {
+                $('#typecho-nav-list').find('.parent a').focus(function() {
+                    $('#typecho-nav-list').find('.child').hide();
+                    $(this).parents('.root').find('.child').show();
+                });
+                $('.operate').find('a').focus(function() {
+                    $('#typecho-nav-list').find('.child').hide();
+                });
+            })();
+
+
+            if ($('.typecho-login').length == 0) {
+                $('a').each(function () {
+                    var t = $(this), href = t.attr('href');
+
+                    if ((href && href[0] == '#')
+                            || /^http\:\/\/www\.leokong\.com\/admin\/.*$/.exec(href)
+                            || /^http\:\/\/www\.leokong\.com\/index\\/action\/[_a-zA-Z0-9\/]+.*$/.exec(href)) {
+                        return;
+                    }
+                });
+            }
+        });
+    })();
+</script>
+<script>
+    (function () {
+        $(document).ready(function () {
+            $('.typecho-list-table').tableSelectable({
+                checkEl     :   'input[type=checkbox]',
+                rowEl       :   'tr',
+                selectAllEl :   '.typecho-table-select-all',
+                actionEl    :   '.dropdown-menu a,button.btn-operate'
+            });
+
+            $('.btn-drop').dropdownMenu({
+                btnEl       :   '.dropdown-toggle',
+                menuEl      :   '.dropdown-menu'
+            });
+        });
+    })();
+</script>
+{% endblock %}

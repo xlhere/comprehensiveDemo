@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @keyframes rotating {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(1turn);
+      }
+    }
+    button {
+      outline: none;
+    }
+    .btn {
+      padding: 12px 30px;
+      background: #409EFF; 
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      /* 83C0FF */
+    }
+    .loading {
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      animation: rotating 2s linear infinite;
+    }
+    .btn>span {
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <button id="btn" class="btn">
+      <!-- <img id="btn-img" src="../img/Loading.png"> -->
+      <span id="show-text">开始加载</span>
+    </button>
+    </div>
+</body>
+<script>
+  let flag = false
+  document.getElementById("btn").onclick = function () {
+    let span = document.getElementById('show-text')
+    if(!flag){
+      let img = document.createElement('img')
+      img.src = '../img/loading.png'
+      img.setAttribute("class", "loading")
+      // this.appendChild(img)
+      this.prepend(img)
+      span.innerText = "加载中..."
+    }else{
+      // btn.classList.remove("loading")
+      this.removeChild(this.firstChild)
+      span.innerText = "开始加载"
+    }
+    flag = !flag
+  }
+</script>
+
+</html>

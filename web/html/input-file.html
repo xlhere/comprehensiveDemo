@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="upload_field">
+		<label for="thumb"><i class="required"></i>标识缩略图</label>
+		<div class="upload_thumb">
+			<input type="file" id="thumb" title="" name="thumb" value="" accept="image/png" />
+			<div class="upload_preview" title="">
+				<img src="">
+			</div>
+		</div>
+	</div>
+</body>
+<script src="../js/lib/jquery-3.5.1.min.js.js"></script>
+<script>
+	var oldThumbVal = $('[name=thumb]').val();
+	function preview(input) {
+		if (input.files && input.files[0]) {
+			var fileName = input.files[0].name.split('.').slice(-1).toString();
+			//限制文件格式
+			switch (fileName) {
+				case 'png':
+					var reader = new FileReader();
+					reader.onload = function (e) {
+						var $img = $('<img/>');
+						$img.attr('src', e.target.result);
+						$('.upload_preview').html('');
+						$('.upload_preview').append($img);
+						$('.upload_preview').css({ 'background-color': '#fff', 'border': '1px solid #e0e0e0' });
+					};
+					reader.readAsDataURL(input.files[0]);
+					//获取图片名字
+					var packName = input.value.split('\\').slice(-1);
+					$('[name=thumb]').attr('title', packName);
+
+					oldThumbVal = input.files[0];
+					break;
+				default:
+					alert("请上传png格式图片");
+					$('[name=thumb]').val('');
+					return;
+			};
+		};
+		if (oldThumbVal) {
+			$('[name=thumb]').attr('title', oldThumbVal.name);
+		};
+	}
+	//上传更新素材思路
+	var formData = new FormData();
+	if (oldThumbVal) {
+		if ($('[name=thumb]').val()) {
+			formData.append('thumb', $('[name=thumb]')[0].files[0]);
+		} else {
+			formData.append('thumb', oldThumbVal);
+		};
+	};
+	$('[name=thumb]').change(function() {
+        preview(this);
+    });
+</script>
+
+</html>

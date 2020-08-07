@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+<style>
+  .container{
+    width: 800px;
+    height: 800px;
+    background-color: plum;
+    margin: 0 auto;
+    position: relative;
+  }
+  #div1 {
+    width: 100px;
+    height: 100px;
+    background-color: pink;
+    position: absolute;
+  }
+</style>
+
+<body>
+  <div class="container">
+    <div id="div1"></div>
+  </div>
+
+</body>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var oDiv = document.getElementById('div1');
+    disX = 0;
+    disY = 0;
+
+    oDiv.onmousedown = function (ev) {
+      var oEvent = ev || event;
+      disX = oEvent.clientX - oDiv.offsetLeft;
+      disY = oEvent.clientY - oDiv.offsetTop;
+
+      document.onmousemove = function (ev) {
+        var oEvent = ev || event;
+        var l = oEvent.clientX - disX;
+        var t = oEvent.clientY - disY;
+
+        if (l < 0) {
+          l = 0;
+        } else if (l > 800 - oDiv.offsetWidth) {
+          l = 800 - oDiv.offsetWidth;
+        } if (t < 0) {
+          t = 0;
+        } else if (t > 800 - oDiv.offsetHeight) {
+          t = 800 - oDiv.offsetHeight;
+        }
+        oDiv.style.left = l + 'px';
+        oDiv.style.top = t + 'px';
+      }
+      document.onmouseup = function () {
+        document.onmousemove = null;
+        document.onmouseup = null;
+      }
+
+      return false;//阻止默认事件 屏蔽火狐的bug
+    }
+  }
+</script>
+
+</html>

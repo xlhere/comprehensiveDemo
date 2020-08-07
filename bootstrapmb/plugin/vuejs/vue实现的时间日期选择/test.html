@@ -1,0 +1,46 @@
+<div :class="['sel-input','date',{'name-input':name}]">
+  <span v-if="name">{{name}}</span>
+  <input type="text" @focus="inputFocus" @blur="inputBlur" @mousedown="inputMD" v-model="val" readonly/>
+  <i class="i-date"></i>
+  <div class="sel-date" v-show="show" tabindex="99" @blur="dateBlur" @mousedown="dateMD">
+    <template v-if="active!=4">
+      <div class="sd-top">
+        <a class="a-prev" @click="pnClick(-1)"></a>
+        <a class="a-ym" @click="ymClick">{{top}}</a>
+        <a class="a-next" @click="pnClick(1)"></a>
+      </div>
+      <div class="list-day" v-if="active==1||active==5">
+        <div class="week"><span v-for="w in week">{{w}}</span></div>
+        <div class="days">
+          <a :class="['a-day',{active:getDayActive(d)}]" v-for="d in days" :style="{marginLeft:(d==1?DFstyle:'6px')}" @click="dayClick(d)">{{d}}</a>							
+        </div>
+      </div>
+      <div class="list-month" v-else-if="active==2">
+        <a :class="['a-month',{active:i+1 == month}]" v-for="(m,i) in monthArr" @click="monthClick(i)">{{m}}</a>								
+      </div>
+      <div :class="['list-year',{ly2:active==4}]" v-else-if="active==3">
+        <a :class="['a-year',{active:yCloud(y)}]" v-for="y in yearArr" @click="yearClick(y)">{{y}}</a>	
+      </div>
+    </template>
+    <div class="hhmm" v-if="dateType==4||active==6">
+      <div class="hh" v-show="hms==1">
+        <a v-for="a in 24" :style="hhPst(a)" :class="{active:a==parseInt(hhmm[0])}" @click="hhClick(a)"><span :style="hhtRt(a)">{{a==24?"00":a}}</span></a>
+        <span class="a-line" :style="hhlPst"></span>
+      </div>
+      <div class="mm" v-show="hms==2">							
+        <a v-for="a in 59" :style="mmPst(a)" :class="{active:a==parseInt(hhmm[1])}" @click="mmClick(a)"><span :style="mmtRt(a)">{{a<10?"0"+a:a}}</span></a>
+        <a :style="mmPst(0)" :class="{active:hhmm[1]=='00'}" @click="mmClick(0)"><span :style="mmtRt(0)">00</span></a>
+        <span class="a-line" :style="mmlPst"></span>
+      </div>
+    </div>
+    <div class="hmsave" v-if="dateType==4">
+      <span>时:<a @click="hms=1">{{hhmm[0]}}</a></span><span>分:<a @click="hms=2">{{hhmm[1]==60?"00":hhmm[1]}}</a></span>
+      <a @click="mmClick(-1)">确定</a>
+    </div>
+    <div class="ymdhmsave" v-if="dateType==5">
+      <a @click="active=5">{{year+"-"+month.toString().padStart(2,"0")+"-"+day.toString().padStart(2,"0")}}</a>
+      <a @click="active=6;hms=1">{{hhmm.join(":")}}</a>
+      <a @click="mmClick(-1)">确定</a>
+    </div>
+  </div>
+</div>

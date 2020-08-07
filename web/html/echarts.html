@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>echarts demo</title>
+  <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+  <script type="text/javascript">
+
+    var chart;
+    require.config({
+      paths: {
+        echarts: 'http://echarts.baidu.com/build/dist'
+      }
+    });
+    require(['echarts', 'echarts/chart/tree'], function (ec) {
+      chart = ec.init(document.getElementById("main"));
+      chart.setOption(option);
+      var ecConfig = require('echarts/config');
+      chart.on(ecConfig.EVENT.CLICK, clickFun); //也可以注册其他事件 hover 、mouseout等
+    })
+
+    var option = {
+      tooltip: {
+        trigger: 'item',
+        formatter: '{b}:{c}',
+        hideDelay: 0 // chart.refresh();刷新时会维持当时图表的所有状态，所以设置隐藏延迟为0，否则在快速选择另一个节点时（尤其是数据比较多时）导致无法显示选择中的tooltip
+        //无法完全避免但是很大减轻了副作用
+      },
+      series: [{
+        name: '树图',
+        type: 'tree',
+        orient: 'horizontal', // vertical horizontal
+        rootLocation: { x: '10%', y: '60%' }, // 根节点位置  {x: 'center',y: 10}
+        nodePadding: 20, //智能定义全局最小节点间距，不能定义层级节点间距，有点搓。
+        symbolSize: 60,
+        roam: true,  //是否开启鼠标缩放和平移漫游
+        itemStyle: {
+          normal: {
+            lineStyle: {
+              width: 3,
+              color: "#F59501"
+            },
+            borderWidth: 0,
+          },
+        },
+        data: [{
+          name: '主页',
+          symbol: 'image://../img/home.png',
+          children: [
+            {
+              name: '苹果',
+              // symbol: 'path://"M717.3376 539.8016c-0.9472-142.336 77.8496-146.048 81.408-148.3264C754.4064 325.6832 685.4656 315.3664 660.9152 314.3936c-58.6496-6.0672-114.4832 34.3808-144.2816 34.3808C486.912 348.7744 440.9344 314.2656 392.2944 315.1872c-63.9232 0.9472-122.9312 37.632-155.9552 95.7696C169.9072 528.0512 219.3152 701.4656 284.16 796.3904c31.616 46.4896 69.376 98.6624 118.9632 96.8192 47.6928-1.92 65.7664-31.3856 123.4688-31.3856 57.728 0 73.8816 31.3856 124.416 30.336 51.328-0.9472 83.8912-47.36 115.2512-94.0288 36.3776-53.9392 51.328-103.5008 52.224-106.1376-1.152-0.512-100.1472-57.2672-101.1968-152.192h0.0768z,M511.616 319.3088C511.616 213.6832 595.968 128 700.0576 128c0 105.7024-84.4032 191.3088-188.416 191.3088',
+              symbol: 'image://../img/apple.png',
+              children: [{
+                name: '孩子',
+                symbol: 'circle',
+              }]
+            },
+            {
+              name: '小米',
+              symbol: 'image://../img/mi.png',
+            }
+          ]
+        }]
+      }]
+    };
+    //关键点！
+    function clickFun(param) {
+      param.data.symbol = 'image://../img/hw.png';
+      param.data.name = '华为';
+      //远程加载图片最好先预加载过来，避免下载图标延迟。 var oImg = new Image();oImg.src = img;
+      chart.refresh(); //一定要refresh，否则不起作用
+    }
+    function debounce(fn, wait) {
+      var timer = null;
+      return function () {
+        var context = this
+        var args = arguments
+        if (timer) {
+          clearTimeout(timer);
+          timer = null;
+        }
+        timer = setTimeout(function () {
+          fn.apply(context, args)
+        }, wait)
+      }
+    }
+
+    function resize() {
+      console.log(1)
+      chart && chart.resize()
+    }
+    resizeHandler = debounce(() => {
+        resize()
+      }, 100)
+    // setInterval(debounce(() => {
+    //   resize()
+    // },500),1000)
+    window.addEventListener('resize', resizeHandler)
+  </script>
+</head>
+
+<body>
+  <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+  <div id="main" style="height:400px"></div>
+</body>
+
+</html>

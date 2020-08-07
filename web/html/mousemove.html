@@ -1,0 +1,150 @@
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>设置整个页面的元素都能拖动</title>
+  <style type="text/css">
+    #box1 {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: absolute;
+    }
+
+    #box2 {
+      width: 100px;
+      height: 100px;
+      background-color: yellow;
+      position: absolute;
+      left: 200px;
+      top: 200px;
+    }
+  </style>
+  <script type="text/javascript">
+    window.onload = function () {
+      var box1 = document.getElementById("box1");
+      var box2 = document.getElementById("box2")
+      drag(box1);
+    };
+    /*
+     * 提取一个专门用来设置拖拽的函数
+     * 参数：开启拖拽的元素
+     */
+    function drag(obj) {
+      obj.onmousedown = function (event) {
+        /*
+         * setCapture这个方法只有IE支持，
+         * 但在火狐中不会报错，在谷歌终会报错
+         * 所以要判断一下是在那个浏览器中运行
+         */
+        obj.setCapture && obj.setCapture();//判断浏览器是否有setCapture()这个方法
+        //在最开始就求出box1的偏移量
+        event = event || window.event;
+        var ol = event.clientX - obj.offsetLeft;
+        var ot = event.clientY - obj.offsetTop;
+        document.onmousemove = function (event) {//这个方法如果在onmousedown响应函数外面绑定的话，当页面一打开的时候，鼠标移动，box1也会跟着移动
+          event = event || window.event;
+          //var left = event.clientX; //最开始的思路获取鼠标水平方向的位置
+          var left = event.clientX - ol;//最后定下的思路获取鼠标水平方向的位置
+          //var top = event.clientY; //最开始的思路获取鼠标垂直方向的位置
+          //修改box1的位置
+          var top = event.clientY - ot;//最后定下的思路获取鼠标水平方向的位置
+          obj.style.left = left + "px";
+          obj.style.top = top + "px";
+        };
+        //对box1绑定一个鼠标松开事件
+        document.onmouseup = function () {
+          //当鼠标松开时,box1被固定在鼠标当前的位置
+          //取消onmousemove事件
+          document.onmousemove = null;//让这个onmousemove整个事件为空
+          //取消onmouseup这个事件：
+          document.onmouseup = null;
+          //releaseCapture（）用于设置取消setCapture（）方法
+          obj.releaseCapture && obj.releaseCapture();//判断浏览器是否有releaseCapture()这个方法
+
+        }
+        //div的水平偏移量= 鼠标clentX的相对于页面左端的水平距离 -元素offsetLeft相对于页面左端的水平距离
+        //div的垂直偏移量= 鼠标clentY的相对于页面左端的水平距离 -元素offsetTop相对于页面左端的水平距离
+        //向上onmousedown里面加代码
+        /*
+         * 当我们拖拽一个网页中的内容，浏览器会默认去搜索引擎中搜说内容
+         * 此时会导致拖拽功能的异常，这是浏览器默认的行为
+         * 如果不想发生这种行为，可以通过return false来取消这个默认行为
+         * 但是这个方法IE8不起作用
+         */
+        //在函数onmousedown的最后添加return false
+        return false;
+      };
+
+    }
+  </script>
+</head>
+
+<body>
+  <div id="box1"></div>
+  <div id="box2"></div>
+</body>
+</html> -->
+
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta charset="utf-8"> 
+<meta name="author" content="http://www.softwhy.com/" /> 
+<title>蚂蚁部落</title> 
+<style type="text/css">
+#box{
+  width:400px;
+  height:300px;
+  background-color:paleturquoise;
+  margin:0px auto;
+  position:relative;
+}
+#drag{
+  width:50px;
+  height:50px;
+  background:pink;
+  position:absolute;
+}
+</style>
+<script type="text/javascript"> 
+window.onload=function(){
+  var obox=document.getElementById("box");
+  var odrag=document.getElementById("drag");
+  var flag=false;
+  var x,y;
+  var ol,ot;
+  odrag.onmousedown=function(ev){
+    var ev=window.event||ev;
+    flag=true;
+    x=ev.clientX;
+    y=ev.clientY;
+    ol=odrag.offsetLeft;
+    ot=odrag.offsetTop;
+  }
+  document.onmousemove=function(ev){
+    if(flag==false) return;
+    var ev=window.event||ev;
+    var _x,_y;
+    _x=ev.clientX-x+ol;
+    console.log(ev.clientX)
+    _y=ev.clientY-y+ot;
+    if(_x<0) _x=0;
+    if(_y<0) _y=0;
+    if(_x>obox.offsetWidth-odrag.offsetWidth) _x=obox.offsetWidth-odrag.offsetWidth;
+    if(_y>obox.offsetHeight-odrag.offsetHeight) _y=obox.offsetHeight-odrag.offsetHeight;
+          
+     odrag.style.left=_x+"px";
+     odrag.style.top=_y+"px";
+  }
+  document.onmouseup=function(){flag=false;}
+}
+</script> 
+</head> 
+<body> 
+<div id="box">
+  <div id="drag"></div>
+</div>
+</body> 
+</html>

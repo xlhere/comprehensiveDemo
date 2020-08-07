@@ -1,0 +1,114 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="typecho-page-title">
+    <h2>网站概要</h2>
+</div>
+<div class="row typecho-page-main">
+    <div class="col-mb-12 welcome-board" role="main">
+        <p>目前有 <em>{{totalPosts}}</em> 篇文章, 并有 <em>{{totalCom}}</em> 条关于你的评论在 <em>{{totalCate}}</em> 个分类中.                <br>点击下面的链接快速开始:</p>
+
+        <ul id="start-link" class="clearfix">
+            <li><a href="/admin/write-post">撰写新文章</a></li>
+            <li><a href="/admin/profile">更新我的资料</a></li>
+        </ul>
+    </div>
+
+    <div class="col-mb-12 col-tb-4" role="complementary">
+        <section class="latest-link">
+            <h3>最近发布的文章</h3>
+            {% if topPosts %}
+            <ul>
+                {% for post in topPosts %}
+                <li>
+                    <span>{{ post.created}}</span>
+                    <a href="/posts/{{post.slug}}.html" class="title">{{ post.title }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </section>
+    </div>
+
+    <div class="col-mb-12 col-tb-4" role="complementary">
+        <section class="latest-link">
+            <h3>最近得到的回复</h3>
+            <ul>
+                <li>
+                    <span>3.10</span>
+                    <a href="/index/2016/03/07/30.html#comment-38" class="title"><a href="http://www.typecho.org" rel="external nofollow">java小沙弥</a></a>:
+                    1123123                        </li>
+                <li>
+                    <span>3.10</span>
+                    <a href="/index/2016/03/07/30.html#comment-37" class="title"><a href="http://www.typecho.org" rel="external nofollow">java小沙弥</a></a>:
+                    13123123                        </li>
+                <li>
+                    <span>3.10</span>
+                    <a href="/index/2016/03/07/30.html#comment-36" class="title"><a href="http://www.typecho.org" rel="external nofollow">java小沙弥</a></a>:
+                    12e12e32                        </li>
+                <li>
+                    <span>3.10</span>
+                    <a href="/index/2016/03/07/30.html#comment-35" class="title"><a href="http://www.typecho.org" rel="external nofollow">java小沙弥</a></a>:
+                    123132                        </li>
+                <li>
+                    <span>3.10</span>
+                    <a href="/index/2016/03/07/30.html#comment-34" class="title"><a href="http://www.typecho.org" rel="external nofollow">java小沙弥</a></a>:
+                    131                        </li>
+                <li>
+                    <span>3.10</span>
+                    <a href="/index/2016/03/07/30.html#comment-33" class="title"><a href="http://www.typecho.org" rel="external nofollow">java小沙弥</a></a>:
+                    1312                        </li>
+                <li>
+                    <span>3.10</span>
+                    <a href="/index/2016/03/07/30.html#comment-32" class="title"><a href="http://www.typecho.org" rel="external nofollow">java小沙弥</a></a>:
+                    1313                        </li>
+                <li>
+                    <span>3.10</span>
+                    <a href="/index/2016/03/07/30.html#comment-31" class="title"><a href="http://www.typecho.org" rel="external nofollow">java小沙弥</a></a>:
+                    1321                        </li>
+                <li>
+                    <span>3.10</span>
+                    <a href="/index/2016/03/07/30.html#comment-30" class="title"><a href="http://www.typecho.org" rel="external nofollow">java小沙弥</a></a>:
+                    1312                        </li>
+                <li>
+                    <span>3.10</span>
+                    <a href="/index/2016/03/07/30.html#comment-29" class="title"><a href="http://www.typecho.org" rel="external nofollow">java小沙弥</a></a>:
+                    1321                        </li>
+            </ul>
+        </section>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block jsBlock %}
+
+<script>
+    (function () {
+        $(document).ready(function() {
+
+            // 导航菜单 tab 聚焦时展开下拉菜单
+            (function () {
+                $('#typecho-nav-list').find('.parent a').focus(function() {
+                    $('#typecho-nav-list').find('.child').hide();
+                    $(this).parents('.root').find('.child').show();
+                });
+                $('.operate').find('a').focus(function() {
+                    $('#typecho-nav-list').find('.child').hide();
+                });
+            })();
+
+            if ($('.typecho-login').length == 0) {
+                $('a').each(function () {
+                    var t = $(this), href = t.attr('href');
+                    if ((href && href[0] == '#')
+                            || /^http\:\/\/www\.leokong\.com\/admin\/.*$/.exec(href)
+                            || /^http\:\/\/www\.leokong\.com\/index\\/action\/[_a-zA-Z0-9\/]+.*$/.exec(href)) {
+                        return;
+                    }
+                });
+            }
+        });
+    })();
+</script>
+{% endblock %}

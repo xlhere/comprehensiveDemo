@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+  <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+  </div>
+
+  <script type="module">
+    import {mixinsTest} from './mixins.js'
+    new Vue({
+      el: '#app',
+      mixins:[mixinsTest],
+      data: {
+      },
+      methods: {
+        
+      },
+      created () {
+        console.log('hello')
+      }
+    })
+  </script>
+</body>
+
+</html>
