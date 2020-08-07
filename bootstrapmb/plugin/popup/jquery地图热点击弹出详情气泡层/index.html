@@ -1,0 +1,853 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery 地图点击显示对应弹窗介绍</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <script src="js/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+    <div class="map-content map-branch">
+        <div class="map-module">
+            <p class="map-title">就近找到我们</p>
+            <div class="map-content-info">
+                <div class="branch-map-l">
+                    <div class="map-content-box">
+                        <span class="map-dot beijing" data-id="beijing" value="北京">北京</span>
+                        <span class="map-dot tianjin" data-id="tianjin" value="天津">天津</span>
+
+                        <span class="map-dot shanghai cur" data-id="shanghai" value="上海">上海</span>
+                        <span class="map-dot jiangsu" data-id="jiangsu" value="江苏">江苏</span>
+                        <span class="map-dot zhejiang" data-id="zhejiang" value="浙江">浙江</span>
+
+                        <span class="map-dot shandong" data-id="shandong" value="山东">山东</span>
+                        <span class="map-dot henan" data-id="henan" value="河南">河南</span>
+                        <span class="map-dot hubei" data-id="hubei" value="湖北">湖北</span>
+                        <span class="map-dot hunan" data-id="hunan" value="湖南">湖南</span>
+                        <span class="map-dot guangdong" data-id="guangdong" value="广东">广东</span>
+                        <span class="map-dot guangxi" data-id="guangxi" value="广西">广西</span>
+                        <span class="map-dot chongqing" data-id="chongqing" value="重庆">重庆</span>
+                        <span class="map-dot sichuan" data-id="sichuan" value="四川">四川</span>
+
+                    </div>
+
+                    <div class="branch-map-data" id="company_guangdong">
+                        <div class="branch-map-data-title">
+                            <p>广东</p>
+                        </div>
+                        <div class="branch-map-data-info">
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="广东网站建设">
+                                    <p class="data-name">广州分公司</p>
+                                </a>
+                                <p>地址： 广州市越秀区广州大道中289号南方日报</p>
+                                <p>总机：18688864252</p>
+                                <p>传真：020-22387951</p>
+                            
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="广东网站建设">
+                                    <p class="data-name">深圳分公司</p>
+                                </a>
+                                <p>地址： 深圳市南山区高新技术产业园中</p>
+                                <p>总机：0755-33508008 </p>
+                                <p>传真：0755-33508160</p>
+                                
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="广东网站建设">
+                                    <p class="data-name">深圳第二分公司</p>
+                                </a>
+                                <p>地址： 深圳市宝安13区宝民一路宝安宝通大厦</p>
+                                <p>总机：075533818028</p>
+                                <p>传真：0755-33818058</p>
+                               
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="广东网站建设">
+                                    <p class="data-name">东莞分公司</p>
+                                </a>
+                                <p>地址： 东莞市莞太大道南城路段15号丝绸大厦</p>
+                                <p>总机：0769-23364010</p>
+                                <p>传真：0769-23364003</p>
+                                
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="广东网站建设">
+                                    <p class="data-name">东莞第二分公司</p>
+                                </a>
+                                <p>地址： 东莞市南城区莞太路丝绸大厦3楼</p>
+                                <p>总机：0769-89396708</p>
+                                <p>传真：0769-85021520</p>
+                                
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="广东网站建设">
+                                    <p class="data-name">佛山分公司</p>
+                                </a>
+                                <p>地址： 佛山市禅城区季华五路55号万科</p>
+                                <p>总机：0757-83657888</p>
+                                <p>传真：0757-83657798</p>
+                               
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="广东网站建设">
+                                    <p class="data-name">中山分公司</p>
+                                </a>
+                                <p>地址： 中山市石岐区安栏路2号中恳大厦16层</p>
+                                <p>总机：0760-23886601</p>
+                                <p>传真：0760-23881200</p>
+ 
+                            </div>
+                            <div class="data-branch">
+                                <a href="#n" target="_blank" title="广东网站建设">
+                                    <p class="data-name">惠州分公司</p>
+                                </a>
+                                <p>地址： 惠州市麦地路69号达利大厦</p>
+                                <p>总机：0752-2080100</p>
+                                <p>传真：0752-2080202</p>
+                                
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="广东网站建设">
+                                    <p class="data-name">汕头分公司</p>
+                                </a>
+                                <p>地址： 汕头市金环路时代广场西侧潮汕星河大厦</p>
+                                <p>总机：0754-88483737</p>
+                                <p>传真：0754-88483747</p>
+                               
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="广东网站建设">
+                                    <p class="data-name">龙岗分公司</p>
+                                </a>
+                                <p>地址： 深圳市龙岗区龙岗街道龙岗大道号</p>
+                                <p>总机：0755-33839928</p>
+                                <p>传真：0755-33839900</p>
+                              
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="广东网站建设">
+                                    <p class="data-name">顺德分公司</p>
+                                </a>
+                                <p>地址： 广东省佛山市顺德区大良街道办事处中区居委会</p>
+                                <p>总机：0757-22313658</p>
+                                <p>传真：0757-22313765</p>
+                                
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="广东网站建设">
+                                    <p class="data-name">江门分公司</p>
+                                </a>
+                                <p>地址： 东华一路61号金华商业中心8层825室</p>
+                                <p>总机：13902586188,0750-3293088</p>
+                                <p>传真：0750-3293009</p>
+                                
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="广东网站建设">
+                                    <p class="data-name">珠海分公司</p>
+                                </a>
+                                <p>地址： 广东省珠海市香洲区明珠南路2158号华业大厦</p>
+                                <p>总机：0756－8580080</p>
+                                <p>传真：0756－8580051</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="branch-map-data" id="company_shandong">
+                        <div class="branch-map-data-title">
+                            <p>山东</p>
+                        </div>
+                        <div class="branch-map-data-info">
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="山东网站建设">
+                                    <p class="data-name">青岛分公司</p>
+                                </a>
+                                <p>地址： 青岛市南京路8号府都大厦14层</p>
+                                <p>总机：0532-85027637</p>
+                                <p>传真：0532-66986374</p>
+                               
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="山东网站建设">
+                                    <p class="data-name">济南分公司</p>
+                                </a>
+                                <p>地址： 济南市泺源大街68号玉泉森信大酒店</p>
+                                <p>总机：0531-55657796</p>
+                                <p>传真：0531-55657297</p>
+                                
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="山东网站建设">
+                                    <p class="data-name">烟台分公司</p>
+                                </a>
+                                <p>地址： 山东省烟台市芝罘区南大街213号华天大厦</p>
+                                <p>总机：0535-4080614</p>
+                                <p>传真：0535-6634349</p>
+                                
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="山东网站建设">
+                                    <p class="data-name">济南第二分公司</p>
+                                </a>
+                                <p>地址： 济南市顺河街66号 银座晶都国际1号楼6层</p>
+                                <p>总机：0531-81771588</p>
+                                <p>传真：0531-81771515</p>
+                                
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="山东网站建设">
+                                    <p class="data-name">威海分公司</p>
+                                </a>
+                                <p>地址： 威海青岛中路附106号龙海国际</p>
+                                <p>总机：0631-5322326</p>
+                                <p>传真：0631-5272829</p>
+                               
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="山东网站建设">
+                                    <p class="data-name">淄博分公司</p>
+                                </a>
+                                <p>地址： 淄博市张店区柳泉路156号</p>
+                                <p>总机：0533-2360088</p>
+                                <p>传真：0533-2360000</p>
+                               
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="山东网站建设">
+                                    <p class="data-name">潍坊分公司</p>
+                                </a>
+                                <p>地址： 潍坊市奎文区鸢飞路与福寿街万达广场B座11楼</p>
+                                <p>总机：0536-5076688</p>
+                                <p>传真：0536-5076606</p>
+                               
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="山东网站建设">
+                                    <p class="data-name">临沂分公司</p>
+                                </a>
+                                <p>地址： 临沂市兰山区金雀山一路开元上城B座1117室</p>
+                                <p>总机：0539-3217967</p>
+                                <p>传真：0539-3217933</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="branch-map-data" id="company_jiangsu">
+                        <div class="branch-map-data-title">
+                            <p>江苏</p>
+                        </div>
+                        <div class="branch-map-data-info">
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="江苏网站建设">
+                                    <p class="data-name">南京分公司</p>
+                                </a>
+                                <p>地址： 南京市中山南路315号瑞华大厦19楼</p>
+                                <p>总机：025-69931588</p>
+                                <p>传真：025-66667800</p>
+                               
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="江苏网站建设">
+                                    <p class="data-name">常州分公司</p>
+                                </a>
+                                <p>地址： 常州市新北区通江中路266号浩源大厦15楼</p>
+                                <p>总机：0519-6989xxxx</p>
+                                <p>传真：0519-69898877</p>
+                                
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="江苏网站建设">
+                                    <p class="data-name">无锡分公司</p>
+                                </a>
+                                <p>地址： 无锡市北塘区兴源北路600华仁·凤凰国际大厦2103-2104室</p>
+                                <p>总机：0510-68500666</p>
+                                <p>传真：0510-68502123</p>
+                                
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="江苏网站建设">
+                                    <p class="data-name">南通分公司</p>
+                                </a>
+                                <p>地址： 江苏省南通市人民中路8号中南大厦1号楼18层</p>
+                                <p>总机：0513-85158088</p>
+                                <p>传真：0513-85158001</p>
+                                
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="江苏网站建设">
+                                    <p class="data-name">苏州分公司</p>
+                                </a>
+                                <p>地址： 苏州市西环路1638号国际经贸大厦27层</p>
+                                <p>总机：0512-85189366</p>
+                                <p>传真：0512-85188376</p>
+                               
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="江苏网站建设">
+                                    <p class="data-name">江阴分公司</p>
+                                </a>
+                                <p>地址： 江阴市澄江中路118号国贸大厦14楼C座</p>
+                                <p>总机：0510-68829555</p>
+                                <p>传真：0510-68825114</p>
+                              
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="">
+                                    <p class="data-name">扬州分公司</p>
+                                </a>
+                                <p>地址： 扬州市文昌中路6号华泰首席国际大厦A座608</p>
+                                <p>总机：0514-85580666</p>
+                                <p>传真：0514-85556960</p>
+                                
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="">
+                                    <p class="data-name">昆山分公司</p>
+                                </a>
+                                <p>地址： 昆山市黑龙江北路88号沪士商务中心5楼C座</p>
+                                <p>总机：0512-57168188</p>
+                                <p>传真：0512-57168218</p>
+                              
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="">
+                                    <p class="data-name">常熟分公司</p>
+                                </a>
+                                <p>地址： 常熟市海虞北路33号古语大厦2层</p>
+                                <p>总机：0512-3434343434</p>
+                                <p>传真：0512-3443343434</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="branch-map-data" id="company_zhejiang">
+                        <div class="branch-map-data-title">
+                            <p>浙江</p>
+                        </div>
+                        <div class="branch-map-data-info">
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="浙江网站建设">
+                                    <p class="data-name">杭州分公司</p>
+                                </a>
+                                <p>地址： 文三西路118号电子商务大厦五层</p>
+                                <p>总机：0571-454534545</p>
+                                <p>传真：0571-45454554</p>
+                                
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="">
+                                    <p class="data-name">宁波分公司</p>
+                                </a>
+                                <p>地址： 宁波市海曙区柳汀街225号灵西大厦北侧</p>
+                                <p>总机：0574-34343434</p>
+                                <p>传真：0574-3434433434</p>
+                                
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="">
+                                    <p class="data-name">温州分公司</p>
+                                </a>
+                                <p>地址： 温州市鹿城区南郊乡洛河路15号A幢5楼502室</p>
+                                <p>总机：0577-28878300</p>
+                                <p>传真：0577-28878138</p>
+                                
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="">
+                                    <p class="data-name">金华分公司</p>
+                                </a>
+                                <p>地址： 金华市婺城区金帆街838号诚意产业园大厦</p>
+                                <p>总机：0579-786545567</p>
+                                <p>传真：0579-766767676</p>
+                               
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="">
+                                    <p class="data-name">嘉兴分公司</p>
+                                </a>
+                                <p>地址： 嘉兴市南湖区城南路青年公寓大厦11层</p>
+                                <p>总机：0573-2323232323</p>
+                                <p>传真：0573-2323232323</p>
+                                
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="">
+                                    <p class="data-name">绍兴分公司</p>
+                                </a>
+                                <p>地址： 绍兴市二环北路329号天意广场1层</p>
+                                <p>总机：0575-67676767</p>
+                                <p>传真：0575-6767676776</p>
+                               
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="">
+                                    <p class="data-name">台州分公司</p>
+                                </a>
+                                <p>地址： 台州市椒江区天和路95号合一大厦22层102</p>
+                                <p>总机：0576-344343433434</p>
+                                <p>传真：0576-4334344334</p>
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <div class="branch-map-data" id="company_sichuan">
+                        <div class="branch-map-data-title">
+                            <p>四川</p>
+                        </div>
+                        <div class="branch-map-data-info">
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="">
+                                    <p class="data-name">成都分公司</p>
+                                </a>
+                                <p>地址： 成都市青羊区顺城大街908号爱明大厦10层101</p>
+                                <p>总机：028-67676767</p>
+                                <p>传真：028-67676767</p>
+                                
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="">
+                                    <p class="data-name">成都第二分公司</p>
+                                </a>
+                                <p>地址： 成都市武侯区二环路南四段180号灵谷大厦19层</p>
+                                <p>总机：028-5656565656</p>
+                                <p>传真：028-5656565656</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="branch-map-data" id="company_tianjin">
+                        <div class="branch-map-data-title">
+                            <p>天津</p>
+                        </div>
+                        <div class="branch-map-data-info">
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="">
+                                    <p class="data-name">天津分公司</p>
+                                </a>
+                                <p>地址： 天津市河西区友谊路18号天盟大厦1层</p>
+                                <p>总机：022-56565656</p>
+                                <p>传真：022-67766767</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="branch-map-data" id="company_heilongjiang">
+                        <div class="branch-map-data-title">
+                            <p>黑龙江</p>
+                        </div>
+                        <div class="branch-map-data-info">
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="">
+                                    <p class="data-name">哈尔滨分公司</p>
+                                </a>
+                                <p>地址： 中山路172号l青年公寓大厦12层</p>
+                                <p>总机：0451-34344334</p>
+                                <p>传真：0451-45455445</p>
+                                
+                            </div>
+                            <div class="data-branch">
+                                <a href="" target="_blank" title="">
+                                    <p class="data-name">哈尔滨第二分公司</p>
+                                </a>
+                                <p>地址： 哈尔滨市香坊区中山路172</p>
+                                <p>总机：0451-85860886</p>
+                                <p>传真：</p>
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <div class="branch-map-data" id="company_hubei">
+                        <div class="branch-map-data-title">
+                            <p>湖北</p>
+                        </div>
+                        <div class="branch-map-data-info">
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="">
+                                    <p class="data-name">武汉第一分公司</p>
+                                </a>
+                                <p>地址： 武汉市解放大道557号朝阳搜狐大厦1层</p>
+                                <p>总机：027-78787878</p>
+                                <p>传真：027-45455445</p>
+                                
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="">
+                                    <p class="data-name">武汉第二分公司</p>
+                                </a>
+                                <p>地址： 武汉市洪山区珞狮路14号理工大学办公楼1层</p>
+                                <p>总机：027-23234343</p>
+                                <p>传真：027-45545445</p>
+                                
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="">
+                                    <p class="data-name">宜昌分公司</p>
+                                </a>
+                                <p>地址： 湖北省宜昌市西陵区夷陵大道72号建业大厦11层</p>
+                                <p>总机：0717-9973223</p>
+                                <p>传真：0717-2323232</p>
+                              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="branch-map-data" id="company_hunan">
+                        <div class="branch-map-data-title">
+                            <p>湖南</p>
+                        </div>
+                        <div class="branch-map-data-info">
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="湖南网站建设">
+                                    <p class="data-name">长沙第一分公司</p>
+                                </a>
+                                <p>地址： 长沙市五一大道9926号大厦19层</p>
+                                <p>总机：0731-22222222</p>
+                                <p>传真：0731-22222222</p>
+                               
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="湖南网站建设">
+                                    <p class="data-name">长沙第二分公司</p>
+                                </a>
+                                <p>地址： 长沙市雨花区芙蓉中路三段</p>
+                                <p>总机：0731-67896789678</p>
+                                <p>传真：0731-67890678900</p>
+                              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="branch-map-data" id="company_beijing">
+                        <div class="branch-map-data-title">
+                            <p>北京</p>
+                        </div>
+                        <div class="branch-map-data-info">
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="">
+                                    <p class="data-name">北京第一分公司</p>
+                                </a>
+                                <p>地址： 北京市朝阳区广渠路首享科技大厦19层</p>
+                                <p>总机：010－99887777</p>
+                                <p>传真：010－00000006</p>
+                               
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="北京网站建设">
+                                    <p class="data-name">北京第二分公司</p>
+                                </a>
+                                <p>地址： 北京市丰台区南四环西路186号国兵大厦</p>
+                                <p>总机：010-09999999</p>
+                                <p>传真：010-56789000</p>
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <div class="branch-map-data" id="company_shanghai" style="display: block; left: 704px; top: 218px;">
+                        <div class="branch-map-data-title">
+                            <p>上海</p>
+                        </div>
+                        <div class="branch-map-data-info">
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="">
+                                    <p class="data-name">浦西分公司</p>
+                                </a>
+                                <p>地址： 上海市中山西路1279弄5号楼</p>
+                                <p>总机：021-8899999999</p>
+                                <p>传真：021-8899999999</p>
+                                
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="上海网站建设">
+                                    <p class="data-name">浦东分公司</p>
+                                </a>
+                                <p>地址： 上海市浦建路145号连城大厦1层</p>
+                                <p>总机：021-09999999</p>
+                                <p>传真：021-xxxxxxxx</p>
+                              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="branch-map-data" id="company_chongqing">
+                        <div class="branch-map-data-title">
+                            <p>重庆</p>
+                        </div>
+                        <div class="branch-map-data-info">
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="">
+                                    <p class="data-name">重庆分公司</p>
+                                </a>
+                                <p>地址： 重庆渝中区邹容路68中国联通大厦1成</p>
+                                <p>总机：023-09099999</p>
+                                <p>传真：023-76544444</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="branch-map-data" id="company_jilin">
+                        <div class="branch-map-data-title">
+                            <p>吉林</p>
+                        </div>
+                        <div class="branch-map-data-info">
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="">
+                                    <p class="data-name">长春分公司</p>
+                                </a>
+                                <p>地址： 长春市西安大路727号中航皇城8层</p>
+                                <p>总机：0431－099887877</p>
+                                <p>传真：0431－111111111</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="branch-map-data" id="company_hebei">
+                        <div class="branch-map-data-title">
+                            <p>河北</p>
+                        </div>
+                        <div class="branch-map-data-info">
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="河北网站建设">
+                                    <p class="data-name">石家庄分公司</p>
+                                </a>
+                                <p>地址： 河北省石家庄市中山西路83号东方大厦22F</p>
+                                <p>总机：0311-87863988</p>
+                                <p>传真：0311-87863893</p>
+                                
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="河北网站建设">
+                                    <p class="data-name">唐山分公司</p>
+                                </a>
+                                <p>地址： 唐山建设路世博写字楼A座9层</p>
+                                <p>总机：0315-3718595</p>
+                                <p>传真：0315-3790674</p>
+                             
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="河北网站建设">
+                                    <p class="data-name">保定分公司</p>
+                                </a>
+                                <p>地址： 河北省保定市高开区北二环路5699号国家大学科技园2号楼5层</p>
+                                <p>总机：0312-3312800</p>
+                                <p>传真：0312-3312778</p>
+                              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="branch-map-data" id="company_shanxi">
+                        <div class="branch-map-data-title">
+                            <p>山西</p>
+                        </div>
+                        <div class="branch-map-data-info">
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="山西网站建设">
+                                    <p class="data-name">太原分公司</p>
+                                </a>
+                                <p>地址： 太原市小店区平阳路14号赛格商务楼21层A-D</p>
+                                <p>总机：0351-7555570</p>
+                                <p>传真：0351-7555948</p>
+                             
+                            </div>
+                        </div>
+                    </div>
+                    <div class="branch-map-data" id="company_jiangxi">
+                        <div class="branch-map-data-title">
+                            <p>江西</p>
+                        </div>
+                        <div class="branch-map-data-info">
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="江西网站建设">
+                                    <p class="data-name">南昌分公司</p>
+                                </a>
+                                <p>地址： 八一大道357号财富广场A-1903</p>
+                                <p>总机：0791-86259996</p>
+                                <p>传真：0791-86269896</p>
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <div class="branch-map-data" id="company_henan">
+                        <div class="branch-map-data-title">
+                            <p>河南</p>
+                        </div>
+                        <div class="branch-map-data-info">
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="河南网站建设">
+                                    <p class="data-name">郑州分公司</p>
+                                </a>
+                                <p>地址： 郑州市二七区铭功路83号豫港大厦601</p>
+                                <p>总机：0371-66281309</p>
+                                <p>传真：0371-66289668</p>
+                              
+                            </div>
+                            <div class="data-branch">
+                                <a href="#m" target="_blank" title="河南网站建设">
+                                    <p class="data-name">洛阳分公司</p>
+                                </a>
+                                <p>地址： 河南省洛阳市中州中路245号建业凯旋广场商务楼1602室</p>
+                                <p>总机：0379-69966213</p>
+                                <p>传真：0379-69966293</p>
+                              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="branch-map-data" id="company_anhui">
+                        <div class="branch-map-data-title">
+                            <p>安徽</p>
+                        </div>
+                        <div class="branch-map-data-info">
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="安徽网站建设">
+                                    <p class="data-name">合肥分公司</p>
+                                </a>
+                                <p>地址： 合肥市高新区长江西路687号拓基城市广场金座C座2217-2224室</p>
+                                <p>总机：0551-66189488</p>
+                                <p>传真：0551-66189411</p>
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <div class="branch-map-data" id="company_guangxi">
+                        <div class="branch-map-data-title">
+                            <p>广西</p>
+                        </div>
+                        <div class="branch-map-data-info">
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="广西网站建设">
+                                    <p class="data-name">柳州分公司</p>
+                                </a>
+                                <p>地址： 柳州市桂中大道南端阳光壹佰2号楼2006室</p>
+                                <p>总机：0772-2038550</p>
+                                <p>传真：0772-203850</p>
+                               
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="广西网站建设">
+                                    <p class="data-name">南宁分公司</p>
+                                </a>
+                                <p>地址： 广西壮族自治区南宁市民主路8号斯壮大厦17楼</p>
+                                <p>总机：0771-2203010</p>
+                                <p>传真：0771-2212831</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="branch-map-data" id="company_fujian">
+                        <div class="branch-map-data-title">
+                            <p>福建</p>
+                        </div>
+                        <div class="branch-map-data-info">
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="福建网站建设">
+                                    <p class="data-name">厦门分公司</p>
+                                </a>
+                                <p>地址： 福建省厦门市思明区前埔路506、508号国金广场A栋503、505室</p>
+                                <p>总机：0592-3181808</p>
+                                <p>传真：</p>
+                               
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="福建网站建设">
+                                    <p class="data-name">福州分公司</p>
+                                </a>
+                                <p>地址： 福州市仓山区对湖街道上三路216号山亚大厦10层</p>
+                                <p>总机：0591-83203100</p>
+                                <p>传真：0591-83200871</p>
+                               
+                            </div>
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="">
+                                    <p class="data-name">泉州分公司</p>
+                                </a>
+                                <p>地址： 福建省泉州市丰泽区云鹿路兴祥大厦A幢2梯7楼</p>
+                                <p>总机：0595-86730008</p>
+                                <p>传真：0595-86730005</p>
+                              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="branch-map-data" id="company_shanxi1">
+                        <div class="branch-map-data-title">
+                            <p>陕西</p>
+                        </div>
+                        <div class="branch-map-data-info">
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="陕西网站建设">
+                                    <p class="data-name">西安分公司</p>
+                                </a>
+                                <p>地址： 西安市莲湖区唐延路22号金辉国际广场6F</p>
+                                <p>总机：029-87407380</p>
+                                <p>传真：029-87407302</p>
+                                 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="branch-map-data" id="company_guizhou">
+                        <div class="branch-map-data-title">
+                            <p>贵州</p>
+                        </div>
+                        <div class="branch-map-data-info">
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="贵州网站建设">
+                                    <p class="data-name">贵阳分公司</p>
+                                </a>
+                                <p>地址： 贵阳市延安中路40号兴中元大厦13楼</p>
+                                <p>总机：0851-86817598</p>
+                                <p>传真：0851-86575030</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="branch-map-data" id="company_yunnan">
+                        <div class="branch-map-data-title">
+                            <p>云南</p>
+                        </div>
+                        <div class="branch-map-data-info">
+                            <div class="data-branch">
+                                <a href="#" target="_blank" title="云南网站建设">
+                                    <p class="data-name">昆明分公司</p>
+                                </a>
+                                <p>地址： 昆明市青年路389号志远大厦副楼（志远新天地）5楼E座</p>
+                                <p>总机：0871-66349955</p>
+                                <p>传真：0871-66098579</p>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            if ($(".map-branch")) {
+             
+                $(".map-dot.shanghai").addClass("cur");
+                $("#company_shanghai").show().css({
+                    "left": $(".map-dot.shanghai").position().left + 36,
+                    "top": $(".map-dot.shanghai").position().top - $("#company_shanghai").height() / 2 + 8
+                });
+                $(".map-dot").on("mouseover", function () {
+                    $(this).addClass("cur").siblings(".map-dot").removeClass("cur");
+                });
+                $(".map-dot").on("click", function () {
+                    $(this).addClass("cur").siblings(".map-dot").removeClass("cur");
+                    var dataid = $(this).attr("data-id")
+                        , comp = $("#company_" + dataid)
+                        , otherComp = $("#company_" + dataid).siblings(".branch-map-data");
+                    comp.fadeIn("fast").css({
+                        "left": $(this).position().left + 36,
+                        "top": $(this).position().top - comp.height() / 2 + 8
+                    });
+                    otherComp.hide();
+                });
+                $(".branch-map-data").on("mouseleave", function () {
+                    $(this).hide();
+                    $(".map-dot").removeClass("cur");
+                });
+            }
+        });
+
+    </script>
+</body>
+</html>
